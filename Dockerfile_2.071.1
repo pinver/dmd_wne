@@ -10,6 +10,6 @@ RUN sed -i -- 's/https/http/g' /etc/pacman.d/mirrorlist && \
 ADD dmd_2.071.1 /dmd
 ENV DISPLAY=:0.0
 ENV WINEDEBUG=-all
-RUN wine /dmd/windows/bin/dmd.exe
+RUN wine /dmd/windows/bin/dmd.exe || true
 
 CMD ["wine", "/dmd/windows/bin/dmd.exe"]
