@@ -1,12 +1,10 @@
 FROM base/archlinux
 
-RUN sed -i -- 's/https/http/g' /etc/pacman.d/mirrorlist && \
+RUN pacman -Syu --noconfirm sed && \
     sed -i -e'/^#\[multilib\]/{s/#//;N;s/#//}' /etc/pacman.conf && \
-    pacman -Sy archlinux-keyring --noconfirm && \
-    pacman -S ca-certificates-mozilla --noconfirm && \
     pacman -Syu --noconfirm && pacman-db-upgrade && \
-    pacman-db-upgrade && \
     pacman -S wine --noconfirm
+
 ADD dmd_2.071.2 /dmd
 ENV DISPLAY=:0.0
 ENV WINEDEBUG=-all
