@@ -8,6 +8,7 @@ RUN pacman -Syu --noconfirm sed && \
 ADD dmd_2.073.1 /dmd
 ENV DISPLAY=:0.0
 ENV WINEDEBUG=-all
+ENV TEMP=/tmp
 RUN wine /dmd/windows/bin/dmd.exe || true
 
 CMD ["wine", "/dmd/windows/bin/dmd.exe"]
